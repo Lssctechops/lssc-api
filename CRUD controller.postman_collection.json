@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "3c63760e-d9c5-4241-a953-e00eca3e7a62",
+		"name": "CRUD controller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33180320",
+		"_collection_link": "https://galactic-rocket-75571.postman.co/workspace/sg-web-app~a34c467b-10c8-45f0-8f07-89720be25e10/collection/33180320-3c63760e-d9c5-4241-a953-e00eca3e7a62?action=share&source=collection_link&creator=33180320"
+	},
+	"item": [
+		{
+			"name": "Brand",
+			"item": [
+				{
+					"name": "brand menu",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/menu/brand",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"menu",
+								"brand"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all brand",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/brand?search=tata",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"brand"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "tata"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get brand by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/brand/680bec9cecb6ad29a2a154b4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"brand",
+								"680bec9cecb6ad29a2a154b4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create brand",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Tata\",\r\n  \"country\": \"India\",\r\n  \"established\": 1937,\r\n  \"image\": \"https://example.com/images/toyota.png\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/brand",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"brand"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update brand",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"established\": 1999\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/brand/680bec9cecb6ad29a2a154b4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"brand",
+								"680bec9cecb6ad29a2a154b4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete brand",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/brand/680bee9ccf8ed61876618226",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"brand",
+								"680bee9ccf8ed61876618226"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Car",
+			"item": [
+				{
+					"name": "create car",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"model\": \"Innova\",\r\n    \"year\": 2019,\r\n    \"color\": \"Red\",\r\n    \"emissionType\": \"BS 4\",\r\n    \"brand\": \"680bec9cecb6ad29a2a154b4\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/car",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"car"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create car",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/car",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"car"
+							],
+							"query": [
+								{
+									"key": "emissionType",
+									"value": "BS 4",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "innova",
+									"disabled": true
+								},
+								{
+									"key": "brand",
+									"value": "680bec9cecb6ad29a2a154b4",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get car by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/car/680bef70cf8ed61876618232",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"car",
+								"680bef70cf8ed61876618232"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update car by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"year\": 2020\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/car/680bef70cf8ed61876618232",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"car",
+								"680bef70cf8ed61876618232"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update car by id Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/car/680bef70cf8ed61876618232",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"car",
+								"680bef70cf8ed61876618232"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
