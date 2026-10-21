@@ -36,6 +36,7 @@ app.use("/api/auth",auth);
 app.use("/api/assessor", assessorRoutes);
 app.use("/api/trainer", trainerRoutes);
 app.use("/api/public", publicRoutes);
+app.use("/api/seed", require("./routes/seed"));
 
 
 
