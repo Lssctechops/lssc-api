@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const GoverningCouncil = require("../models/GoverningCouncil");
 const TeamMember = require("../models/TeamMember");
+const bcrypt = require("bcrypt");
+const User = require("../models/User");
 
 const IMG = (id) =>
   `https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/${id}/public`;
@@ -105,6 +107,35 @@ router.get("/run", async (req, res) => {
       message: "Seed complete",
       council: councilDocs.length,
       team: teamDocs.length,
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+
+// Visit /api/seed/admin ONCE to create the admin login. Remove this file after.
+router.get("/admin", async (req, res) => {
+  try {
+    const mobile = "9999900000";
+    const password = "Admin@123";
+    await User.deleteOne({ mobile });
+    const hashed = await bcrypt.hash(password, 10);
+    await User.create({
+      name: "LSSC Admin",
+      email: "admin@leatherssc.org",
+      mobile,
+      password: hashed,
+      role: "admin",
+      isVerified: true,
+      isApproved: true,
+      status: "active",
+    });
+    res.json({
+      success: true,
+      message: "Admin login created. Use these to log in, then change later.",
+      mobile,
+      password,
     });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });

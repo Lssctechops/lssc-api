@@ -18,12 +18,14 @@ const reportController = require('../controller/ReportController');
 const courseSegmentController = require('../controller/CourseSegmentController');
 const {batchAdminAssessmentController} = require('../controller/BatchAssessmentController');
 const talentFormController = require('../controller/TalentFormController');
+const governingCouncilController = require('../controller/GoverningCouncilController');
+const teamMemberController = require('../controller/TeamMemberController');
 
 const {candidateRegistrationController } = require('../controller/CandidateRegistrationController');
 
 // Protect all routes below this line
-router.use(authController.authenticateToken);   
-router.use(authController.authorizeRole(['admin','subadmin'])); 
+router.use(authController.authenticateToken);
+router.use(authController.authorizeRole(['admin','subadmin']));
 
 
 // Notice CRUD
@@ -117,7 +119,7 @@ router.delete('/courses/:id',  courseController.deleteById);
 // Feedback CRUD
 router.get('/feedbacks', feedbackController.get);
 router.get('/feedbacks/:id', feedbackController.getById);
-router.put('/feedbacks/:id', feedbackController.updateById); // for visibilty update true falus 
+router.put('/feedbacks/:id', feedbackController.updateById); // for visibilty update true falus
 
 // Lessons CURD
 router.get('/course/:course/lessons', lessonsController.get);
@@ -139,20 +141,8 @@ router.get('/reports/trainer-stats', reportController.getTrainerStatsAdmin);
 router.get('/reports/assessor-report', reportController.assessorReport);
 router.get('/reports/assessor-stats', reportController.getAssessorStatsAdmin);
 
-// // Order CRUD
-// router.get('/orders/:id', orderController.getById);
-// router.post('/orders', orderController.create);
-// router.put('/orders/:id', orderController.updateById);
-// router.delete('/orders/:id', orderController.deleteById);
-
-
 // // Custom endpoints
 router.get('/dashboard-stats', UserController.getDashboardStats);
-// router.get('/users-with-purchases', UserController.getUsersWithPurchases);
-// router.get('/users-with-course-names', UserController.getUsersWithCourseNames);
-// router.get('/all-courses', courseController.getAllCoursesWithDetails);
-// router.get('/payments-history', orderController.getPaymentsHistory);
-// router.get('/user-purchase-summary', orderController.getUserPurchaseSummary);
 
 // Candidate Registration Admin
 router.get('/candidateRegistration', candidateRegistrationController.get); // add pagination
@@ -161,5 +151,20 @@ router.get('/candidateRegistration/:id', candidateRegistrationController.getById
 router.get('/talentForm', talentFormController.get); // add pagination
 router.get('/talentForm/:id', talentFormController.getById);
 router.put('/talentForm/:id', talentFormController.updateById);
+
+
+// Governing Council CRUD (admin, protected)
+router.get('/governingCouncil', governingCouncilController.get);
+router.get('/governingCouncil/:id', governingCouncilController.getById);
+router.post('/governingCouncil', governingCouncilController.create);
+router.put('/governingCouncil/:id', governingCouncilController.updateById);
+router.delete('/governingCouncil/:id', governingCouncilController.deleteById);
+
+// Team Member CRUD (admin, protected)
+router.get('/teamMember', teamMemberController.get);
+router.get('/teamMember/:id', teamMemberController.getById);
+router.post('/teamMember', teamMemberController.create);
+router.put('/teamMember/:id', teamMemberController.updateById);
+router.delete('/teamMember/:id', teamMemberController.deleteById);
 
 module.exports = router;
